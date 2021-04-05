@@ -1,7 +1,7 @@
 {
-  "name": "pub-server",
+  "name": "sub-server",
   "version": "1.0.0",
-  "description": "welcome to pub-server",
+  "description": "welcome to sub-server",
   "main": "app.js",
   "scripts": {
     "eslint": "eslint ./src --fix",
@@ -18,7 +18,6 @@
     "prettier": "^1.19.1"
   },
   "dependencies": {
-    "axios": "^0.21.1",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
