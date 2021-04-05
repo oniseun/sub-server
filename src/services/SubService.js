@@ -19,12 +19,12 @@ module.exports.receive = ( topic, body ) => {
 
   const key = `${collection}_${topic}`
   
-  const { success, topic, message, stats } = body;
+  const { success, message, stats } = body;
 
   const notification = new Notification(success, topic, message, stats)
 
   if (!dbService.has(key)) {
-    dbService.set(key, [subscription])
+    dbService.set(key, [notification])
 
   } else {
 

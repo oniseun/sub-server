@@ -1,7 +1,6 @@
 
 const subService = require('../services/SubService')
 const { StatusCodes } = require('http-status-codes')
-const enums = require('../config/enums')
 
 module.exports.getHealth =  (req, res) => {
 
@@ -15,5 +14,5 @@ module.exports.receive = (req, res) => {
 
   const response = subService.receive(topic, body)
   
-  return res.status(StatusCodes.OK).json(response)
+  return res.status(StatusCodes).json(response)
 }
