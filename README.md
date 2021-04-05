@@ -1,6 +1,6 @@
-# pub-server
+# sub-server
 
-> Publisher server
+> Subscriber server
 
 ## Build Setup
 
