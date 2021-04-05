@@ -13,6 +13,6 @@ app.get('/health', AppController.getHealth)
 /// ////////////////////////
 // SERVICE ROUTES
 /// ////////////////////////
-app.post('/receive/:topic', AppController.receiveTopic)
+app.post('/:topic', AppController.receive)
 
 }

@@ -1,4 +1,4 @@
-module.exports = class Recieved {
+module.exports = class AppResponse {
  
     constructor(info, topic, data) {
         this.info = info

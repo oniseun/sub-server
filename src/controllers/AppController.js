@@ -10,9 +10,9 @@ module.exports.getHealth =  (req, res) => {
 
 module.exports.receive = (req, res) => {
 
-  const { params: { topic }, body } = req
+  const { params: { topic }, body: { data } } = req
 
-  const response = subService.receive(topic, body)
+  const response = subService.receive(topic, data)
   
   return res.status(StatusCodes.ACCEPTED).json(response)
 }

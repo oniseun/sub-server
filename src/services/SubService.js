@@ -3,38 +3,33 @@
 
 const pjson = require('../../package.json')
 const config = require('../config/config')
-const Notification = require('../models/Notification')
-const RecievedResponse = require('../models/ReceivedResponse')
+const AppResponse = require('../models/AppResponse')
 const dbService =  require('./DbService')
 const LOG_PREFIX = 'SubService: '
-const collection = 'notification' // notification collection
+const collection = 'data' // notification collection
 
 
 module.exports.getHeath = () => {
   const { name, description, version } = pjson;
-  return { name, description, version, env: config.app.env, stats: dbService.getStats()}
+  return { name, description, version, env: config.app.env, stats: dbService.getStats(), keys: dbService.keys()}
 } 
 
-module.exports.receive = ( topic, body ) => {
+module.exports.receive = ( topic, data ) => {
 
   const key = `${collection}_${topic}`
-  
-  const { success, message, stats } = body;
-
-  const notification = new Notification(success, topic, message, stats)
 
   if (!dbService.has(key)) {
-    dbService.set(key, [notification])
 
+    dbService.set(key, [data])
   } else {
 
-    const notifications = dbService.get(key)
-    notifications.push(notification)
-    dbService.set(key, notifications)
+    const receivedDataList = dbService.get(key)
+    receivedDataList.push(data)
+    dbService.set(key, data)
   }
     const info  = `New message received for topic:${topic}`
     console.info(`${LOG_PREFIX} ${info}`)
 
-    return new RecievedResponse(info, topic, notification.stats.data)
+    return new AppResponse(info, topic, data)
   
 }
