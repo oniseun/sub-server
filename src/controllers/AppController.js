@@ -14,5 +14,5 @@ module.exports.receive = (req, res) => {
 
   const response = subService.receive(topic, body)
   
-  return res.status(StatusCodes).json(response)
+  return res.status(StatusCodes.ACCEPTED).json(response)
 }
