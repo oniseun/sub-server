@@ -4,4 +4,7 @@ Dockerfile
 .dockerignore
 coverage/
 .vscode
-.nyc_output
+.nyc_output/
+.env
+.git 
+.gitignore
