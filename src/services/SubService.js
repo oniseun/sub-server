@@ -25,7 +25,7 @@ module.exports.receive = ( topic, data ) => {
 
     const receivedDataList = dbService.get(key)
     receivedDataList.push(data)
-    dbService.set(key, data)
+    dbService.set(key, receivedDataList)
   }
     const info  = `New message received for topic:${topic}`
     console.info(`${LOG_PREFIX} ${info}`)
