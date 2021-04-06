@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "eslint": "eslint ./src --fix",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_ENV=test nyc --reporter=html --reporter=text mocha 'test/**/*.spec.js'",
     "dev": "npm run eslint && export NODE_ENV=development && nodemon -r ./src/server.js  --ignore node_modules/",
     "prod": "export NODE_ENV=production && node ./src/server.js"
   },
